@@ -110,6 +110,15 @@ source $ZSH/oh-my-zsh.sh
 
 if [ -e /home/liz/.nix-profile/etc/profile.d/nix.sh ]; then . /home/liz/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+# set PATH so it includes coursier bin if it exists
+if [ -d "$HOME/.local/share/coursier/bin" ] ; then
+  PATH="$PATH:$HOME/.local/share/coursier/bin"
+fi
+
+if [ -d "$HOME/Library/Application Support/Coursier/bin" ] ; then
+  PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+fi
+
 if [ $(command -v direnv) ]; then
   export DIRENV_LOG_FORMAT=
   eval "$(direnv hook zsh)"
