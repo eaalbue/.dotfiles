@@ -33,28 +33,8 @@ alias update='\
   sudo apt update && \
   sudo apt -y full-upgrade && \
   sudo apt -y autoremove && \
-  cs update && \
-  refresh-completions && \
   nix-channel --update && \
-  nix-env -u && \
-  cd ~/.dotfiles && \
-  gl && \
-  nix flake update ~/.dotfiles/nix/home-manager && \
-  hms && \
-  nvim --headless +PackerSync +PlugUpdate +qall'
-
-alias updates='\
-  sudo apt update && \
-  sudo apt -y full-upgrade && \
-  sudo apt -y autoremove && \
-  cs update && \
-  refresh-completions && \
-  nix-channel --update && \
-  nix-env -u && \
-  cd ~/.dotfiles && \
-  gl && \
-  hms && \
-  nvim --headless +PackerSync +PlugUpdate +qall'
+  nix profile upgrade ''.*'''
 
 # Nix Home Manager
 alias hm='home-manager'
@@ -74,12 +54,12 @@ alias gapaa='gaa -N && gapa .'
 alias gbda!='git branch --no-color | command grep -vE "^([+*]|\s*($(git_main_branch)|$(git_develop_branch))\s*$)" | command xargs git branch -D 2>/dev/null'
 alias gbdanr='git branch -D $(git for-each-ref --format="%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)" refs/heads) 2>/dev/null'
 alias gca!='gaa && g commit --amend'
-alias gcaf='gaa && g commit --fixup'
+alias gcaf='gaa && g commit --no-verify --fixup'
 alias gcam='gaa && gcmsg'
 alias gcamr='gcam "chore: refactoring"'
 alias gcan!='gaa && g commit --amend --no-edit --no-verify'
 alias gcangpf!='gcan! && gpf!'
-alias gcas='gaa && g commit --squash'
+alias gcas='gaa && g commit --no-verify --squash'
 alias ghdi='gi && gh rcd && gpsup && gh rvw'
 alias ghdim='gim && gh rcd && gpsup && gh rvw'
 alias ghdip='gi && gh rcdp && gpsup && gh rvw'
