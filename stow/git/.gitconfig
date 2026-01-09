@@ -18,5 +18,6 @@
 	allowedSignersFile = ~/.config/git/allowed-ssh-signers
 [rebase]
 	autosquash = true
+	abbreviateCommands = true
 [include]
 	path = ~/.local/.gitconfig
